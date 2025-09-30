@@ -1,0 +1,221 @@
+body {
+    background-color: #1a2c83; /* dark blue background */
+    font-family: "Times New Roman", Times, serif;
+}
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+.title-text {
+    text-decoration: none;
+    color: #ffffff; /* red text */
+    margin-left: 0.5%;
+}
+.logo {
+    height: 40px;
+    width: 40px;
+}
+.main {
+    display: flex;
+    background-color: #22254b; /* slightly lighter blue */
+}
+.main .camera {
+    background-color: #22254b; /* slightly lighter blue */
+    border-radius: 20px;
+    width: 60%;
+}
+.main .camera .btn {
+    text-align: center;
+}
+.main .camera .btn button {
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    width: 100px;
+}
+.main .camera .cam {
+    width: 100%;
+    height: 70vh;
+}
+.main .camera .cam video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+}
+.cam canvas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+}
+.main .info {
+    padding: 2%;
+    width: 33vw;
+    margin-left: 3.5%;
+    background-color: #22254b; /* same as camera */
+    border-radius: 20px;
+    height: 80vh;
+}
+.form label {
+    color: white;
+    font-size: large;
+}
+.setting-btn {
+    margin-bottom: 1%;
+}
+button {
+    background-color: #b1121c; /* red */
+    color: #fff;
+    padding: 0.5%;
+}
+button:hover {
+    background-color: #8e0f17; /* darker red */
+    color: #fff;
+}
+.loginBtn {
+    background-color: #b1121c;
+    color: #fff;
+    padding: 0.5%;
+}
+.loginBtn:hover {
+    background-color: #8e0f17;
+    color: #fff;
+}
+.registerBtn {
+    background-color: #1a2c83;
+    color: #fff;
+    padding: 0.5%;
+}
+.login-title {
+    color: white;
+    text-align: center;
+}
+.login-form {
+    text-align: center;
+}
+.login-form label {
+    color: white;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+#loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #b1121c;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.powered {
+    color: #ffffff;
+    margin-left: 55%;
+    margin-top: 10%;
+}
+.showText {
+    color: #022918;
+    text-align: center;
+    font-style: italic;
+}
+.cancel-button {
+    background-color: transparent;
+    top: -8;
+    right: 60;
+    font-size: 15px;
+    color: #dddddd;
+    cursor: pointer;
+    margin-left: 5%;
+    border: 1px solid #333;
+    background-color: #333a56; /* dark blue-gray */
+    padding: 1.5%;
+}
+.img-captured {
+    width: 100%;
+    height: auto;
+    padding: 5%;
+    z-index: 1;
+    transform: scaleX(-1);
+}
+.receipt-main {
+    height: 100%;
+    text-align: center;
+    padding: 5%;
+}
+.receipt-main P {
+    color: white;
+}
+.status-list-data {
+    text-align: center;
+    color: #fff;
+    list-style-type: none;
+    border: 1px solid #b1121c; /* red border */
+    background-color: #333a56;
+    padding: 10%;
+}
+.btnRedirectToHome {
+    margin-left: 2%;
+}
+.innerBox {
+    margin: 0 40%;
+    text-align: left;
+}
+.btn .btn-cam-flip {
+    margin-bottom: 5%;
+}
+@media screen and (max-width:623px) {
+    .innerBox {
+        margin: 0 20%;
+        text-align: left;
+    }
+}
+@media screen and (max-width:623px) {
+    .main {
+        display: inline;
+    }
+    .main .camera {
+        width: 100%;
+        /* background-color: #1a2c83; */
+        /* background-color: #40adbb; */
+        background-color: #f0c05afa;
+    }
+    .main .info {
+        width: 100%;
+        margin-top: 3%;
+        margin-left: 0%;
+        height: auto;
+        text-align: center;
+    }
+    .main .camera .btn {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    .main .camera .btn button {
+        margin-top: 2%;
+        text-align: center;
+    }
+    .powered {
+        color: white;
+        margin-left: 0%;
+        margin-top: 0%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,229 @@
+/* Position logo in the top-right corner */
+.logo-container {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 3;
+}
+
+/* Logo image with fading opacity animation */
+.logo-fade {
+  width: 60px; /* adjust as needed */
+  height: auto;
+  /* animation: fadeLogo 3s ease-in-out infinite; */
+  /* opacity: 1; */
+}
+
+/* Keyframes to fade in and out */
+/* @keyframes fadeLogo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+} */
+
+.camera-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.camera-feed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Ensures video fills the screen with the right aspect ratio */
+  z-index: 1;
+}
+
+.parent-container {
+  position: absolute;
+  bottom: 0;
+  /* margin-left: 250px; */
+  margin-left: 17%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 300;
+}
+
+
+.user-info {
+  /* background-color: #f7f708; */
+  background-color: #f0c05afa;
+  color: red;
+  font-weight: bold;
+  /* padding: 0.5rem 0; */
+  width: 100%;
+  /* padding-right: 250px; */
+  padding-right: 35%;
+}
+.user-name {
+  font-size: 42px;
+  text-align: center;
+}
+.user-slogan{
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: -20px;
+}
+
+/* .corner-image {
+  position: absolute;
+  bottom: 0px;
+  left: -80px;
+  width: 600px;
+  height: 600px;
+  z-index: 3;
+  object-fit: cover;
+} */
+/* .corner-wrapper {
+  position: absolute;
+  bottom: 0px; 
+  left: 0px;
+  width: 100px;
+  z-index: 300;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  overflow: visible;
+}
+
+.corner-image {
+  object-fit: cover;
+  width:300px;
+  height:600px;
+  filter: brightness(1.2);
+} */
+
+.corner-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 300;
+  /* width: 20vw;  */
+  height: 50vh;      
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Align content to bottom of wrapper */
+  overflow: hidden;
+}
+
+.corner-image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: bottom; /* Stick to bottom inside the transparent area */
+  display: block;
+}
+
+
+
+/* Bottom-right copyright text */
+.copyright-text {
+  position: absolute;
+  bottom: 30px;
+  right: 12px;
+  font-size: 0.9rem;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.6); /* optional for readability */
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 301;
+}
+
+
+/* Smooth transition of user info start */
+/* .fade {
+  opacity: 0.5;
+  transition: opacity 1s ease-in-out;
+}
+.fade.show {
+  opacity: 1;
+} */
+/* Smooth transition of user info end */
+
+
+/* Add Show animation start */
+.fade-enter {
+  opacity: 0;
+  transform: scale(0.98);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 500ms, transform 500ms;
+}
+.fade-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 50ms, transform 50ms;
+}
+
+/* .animated-image {
+  width: 200px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-30px); }
+} */
+
+/* Add Show animation end */
+
+/* Animation start here */
+
+/* .App {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.flower-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; 
+}
+
+.flower {
+  position: absolute;
+  top: -10%;
+  font-size: 30px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(80vh);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+} */
+
+
+
+/* Animation end here */
+

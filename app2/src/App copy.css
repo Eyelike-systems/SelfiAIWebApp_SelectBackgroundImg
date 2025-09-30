@@ -1,0 +1,102 @@
+.camera-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.camera-feed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Ensures video fills the screen with the right aspect ratio */
+  z-index: 1;
+}
+
+h1{
+  font-size: 30px;
+  background-color: red;
+}
+
+/* .corner-image {
+  position: absolute;
+  bottom: 0px;
+  left: -80px;
+  width: 600px;
+  height: 600px;
+  z-index: 3;
+  object-fit: cover;
+} */
+.corner-wrapper {
+  position: absolute;
+  bottom: 0px; /* Must be >= 0 */
+  left: 0px;
+  width: 100px;
+  z-index: 3;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  overflow: visible;
+}
+
+.corner-image {
+  width: 30vw;
+  object-fit: cover;
+}
+
+
+
+
+
+/* Animation start here */
+
+/* .App {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.flower-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; 
+}
+
+.flower {
+  position: absolute;
+  top: -10%;
+  font-size: 30px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(80vh);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+} */
+
+
+
+/* Animation end here */
+
