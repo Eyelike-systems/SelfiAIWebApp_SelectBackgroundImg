@@ -7,7 +7,7 @@ import gsap from "gsap";
 import "../static/css/animation.css";
 import ganeshVideo from "../static/images/ganapatiVideo.mp4";
 import guruDevDattaVideo from "../static/images/GuruDevDatta.mp4";
-import MahaLakshiDevi from "../static/images/MahaLakshiDevi.mp4";
+// import MahaLakshiDevi from "../static/images/MahaLakshiDevi.mp4";
 import { startAnimation, stopAnimation } from "../utils/animationUtils";
 import Hls from "hls.js"; // Import hls.js for HLS support
 // import logo from "../static/images/eyelikesystemsLogo.jpg"
