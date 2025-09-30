@@ -595,7 +595,7 @@ const SentFormData = () => {
         </div>
       ) : (
         <div style={{ textAlign: "center", color: "white", marginTop: "2rem" }}>
-          <h2>Processing your payment....</h2>
+          <h2>Processing your payment.....</h2>
           {loading && <div id="loader"></div>}
         </div>
       )}
