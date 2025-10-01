@@ -87,14 +87,17 @@ const SentFormData = () => {
       cashfree = await load({
         mode: config.MODE,
         version: "2022-09-01", // 👈 REQUIRED
-        // "@cashfreepayments/cashfree-js": "^1.0.4",
+        //"@cashfreepayments/cashfree-js": "^1.0.4",
       });
-      // console.log("Cashfree SDK loaded:", cashfree);
+      //console.log("Cashfree SDK loaded:", cashfree);
     } catch (err) {
       console.error("Cashfree SDK failed to load", err);
     }
   };
   insitialzeSDK();
+
+
+
 
   useEffect(() => {
     dispatch(resetUserAllInfo()); // First remove all redux stored data
@@ -164,23 +167,10 @@ const SentFormData = () => {
   const checkFormCompletion = (data) => {
     const form = formRef.current;
     if (form) {
-      const formFields = [...form.elements].filter(
-        (el) => el.type !== "submit"
-      );
-      const allFieldsFilled = formFields.every(
-        (field) => field.value.trim() !== ""
-      );
+      const formFields = [...form.elements].filter((el) => el.type !== "submit");
+      const allFieldsFilled = formFields.every((field) => field.value.trim() !== "");
       const formComplete = allFieldsFilled && isImageCaptured;
     }
-  };
-
-  const convertToBase64 = (blob) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
   };
 
   // Select background image start -------------------------------------------------------------
@@ -194,16 +184,16 @@ const SentFormData = () => {
   };
 
   // Set first image as default on mount
-  useEffect(() => {
-    const setDefaultImage = async () => {
-      const response = await fetch(image1);
-      const blob = await response.blob();
-      const file = new File([blob], "background.jpg", { type: blob.type });
-      setSelectedBgImage(file);
-      setSelectedBgPreview(URL.createObjectURL(file));
-    };
-    setDefaultImage();
-  }, []);
+  // useEffect(() => {
+  //   const setDefaultImage = async () => {
+  //     const response = await fetch(image1);
+  //     const blob = await response.blob();
+  //     const file = new File([blob], "background.jpg", { type: blob.type });
+  //     setSelectedBgImage(file);
+  //     setSelectedBgPreview(URL.createObjectURL(file));
+  //   };
+  //   setDefaultImage();
+  // }, []);
 
   // Select background image end -------------------------------------------------------------
 
@@ -545,7 +535,6 @@ const SentFormData = () => {
                 <label htmlFor="whatsapp">
                   Get Photo on Whatsapp<span style={{ color: "red" }}>*</span>
                 </label>
-                {loading && <div id="loader"></div>}
                 <p style={{ color: "#d1c9c9", fontStyle: "italic" }}>
                   "Please fill out all required fields marked with an asterisk
                   (*) before submitting." / "सबमिट करण्यापूर्वी कृपया तारांकित
@@ -555,7 +544,11 @@ const SentFormData = () => {
                 <br></br>
                 <p  style={{ color: "red"}}>Please wait 5 seconds after payment. 
                   You’ll be redirected here to see when your image appearing on the screen. 
-                  / कृपया पेमेंट पूर्ण झाल्यानंतर ५ सेकंद प्रतीक्षा करा. तुमचा फोटो स्क्रीनवर कधी दिसेल ते तुम्हाला पाहता येईल.</p>
+                  / कृपया पेमेंट पूर्ण झाल्यानंतर ५ सेकंद प्रतीक्षा करा. तुमचा फोटो स्क्रीनवर कधी दिसेल ते तुम्हाला पाहता येईल.
+                </p>
+
+                  
+                {loading && <div id="loader"></div>}
                   
                 {/* Show error if image is not captured */}
                 {errorMessage && (

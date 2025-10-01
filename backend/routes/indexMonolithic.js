@@ -62,7 +62,7 @@ const paymentSchema = Joi.object({
 });
 
 const dataSchema = Joi.object({
-  customer_name: Joi.string().min(2).max(100).required(),
+  customer_name: Joi.string().min(2).max(30).required(),
   customer_phone: Joi.string()
     .pattern(/^[6-9]\d{9}$/)
     .required(),
@@ -269,7 +269,7 @@ router.post("/api/verify", multiUpload, async (req, res) => {
       // console.log("imageUrl:", imageUrl);
 
       // Call WhatsApp sender
-      await sendWhatsAppImage(customer_phone, customer_name, imageUrl);
+      // await sendWhatsAppImage(customer_phone, customer_name, imageUrl);
       
       // ------------------------ sent whatsapp message end ------------------------
   
