@@ -439,27 +439,28 @@ const SentFormData = () => {
           <div className="info">
             <div className="form">
               <form
-  ref={formRef}
-  onSubmit={(event) => {
-    event.preventDefault();
+                ref={formRef}
+                onSubmit={(event) => {
+                  event.preventDefault();
 
-    // 1️⃣ Check background image
-    if (!selectedBgImage) {
-      alert("Please select a background image before submitting.");
-      return;
-    }
+                  // 1️⃣ Check background image
+                  if (!selectedBgImage) {
+                    alert(
+                      "Please select a background image before submitting."
+                    );
+                    return;
+                  }
 
-    // 2️⃣ Check camera image
-    if (!isImageCaptured) {
-      alert("Please capture your image before submitting.");
-      return;
-    }
+                  // 2️⃣ Check camera image
+                  if (!isImageCaptured) {
+                    alert("Please capture your image before submitting.");
+                    return;
+                  }
 
-    // 3️⃣ Submit form normally
-    handleClick222(event);
-  }}
->
-                
+                  // 3️⃣ Submit form normally
+                  handleClick222(event);
+                }}
+              >
                 <br></br>
                 <BackgroundImage onSelect={handleBgSelect} />
                 {/* invisible input for custom validity */}
@@ -468,7 +469,7 @@ const SentFormData = () => {
                   id="bg-required"
                   style={{
                     position: "absolute",
-                    left: "-9999px",  // move it off-screen
+                    left: "-9999px", // move it off-screen
                     width: "1px",
                     height: "1px",
                     opacity: 0,
@@ -476,19 +477,18 @@ const SentFormData = () => {
                   tabIndex="-1"
                 />
                 {selectedBgPreview && (
-                <div style={{ marginTop: "10px" }}>
-                  <img
-                    src={selectedBgPreview}
-                    alt="Selected background"
-                    width="100"
-                    style={{ border: "2px solid #333" }}
-                  />
-                </div>
-              )}
-
-              <p style={{ color: "red", marginTop: "5px" }}>
-                {!selectedBgImage && "Background image is required *"}
-              </p>
+                  <div style={{ marginTop: "10px" }}>
+                    <img
+                      src={selectedBgPreview}
+                      alt="Selected background"
+                      width="100"
+                      style={{ border: "2px solid #333" }}
+                    />
+                  </div>
+                )}
+                <p style={{ color: "red", marginTop: "5px" }}>
+                  {!selectedBgImage && "Background image is required *"}
+                </p>
                 <br></br>
                 <label htmlFor="fname">
                   Name / नाव <span style={{ color: "red" }}>*</span>
