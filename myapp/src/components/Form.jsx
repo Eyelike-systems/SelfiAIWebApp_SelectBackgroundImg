@@ -10,10 +10,8 @@ import {
   addUserInfo,
   resetUserAllInfo,
 } from "../redux/slices/paymentSlice";
-import AddLogsInDatabase from "./AddLogsInDatabase";
 import flip_cam_icon from "../assets/images/flip_cam.jpeg";
 import BackgroundImage from "./BackgroundImage";
-import image1 from "../assets/images/1.jpg";
 
 const SentFormData = () => {
   const navigate = useNavigate();
@@ -50,11 +48,7 @@ const SentFormData = () => {
 
   const [imageBlobS, setImageBlobS] = useState(null);
 
-  // const [addDataToDatabase, setAddDataToDatabase] = useState(false);
-  const [addPaymentResponseInState, setAddPaymentResponseInState] =
-    useState(null);
   const [facingMode, setFacingMode] = useState("user");
-
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const formRef = useRef(null);
@@ -74,8 +68,6 @@ const SentFormData = () => {
   let customer_email = "";
   let blob = null;
   let imageBlob = null;
-  let user_selected_time;
-  let user_selected_date;
 
   // let insitialzeSDK = async function () {
   //   cashfree = await load({
@@ -95,9 +87,6 @@ const SentFormData = () => {
     }
   };
   insitialzeSDK();
-
-
-
 
   useEffect(() => {
     dispatch(resetUserAllInfo()); // First remove all redux stored data
@@ -167,8 +156,12 @@ const SentFormData = () => {
   const checkFormCompletion = (data) => {
     const form = formRef.current;
     if (form) {
-      const formFields = [...form.elements].filter((el) => el.type !== "submit");
-      const allFieldsFilled = formFields.every((field) => field.value.trim() !== "");
+      const formFields = [...form.elements].filter(
+        (el) => el.type !== "submit"
+      );
+      const allFieldsFilled = formFields.every(
+        (field) => field.value.trim() !== ""
+      );
       const formComplete = allFieldsFilled && isImageCaptured;
     }
   };
@@ -182,18 +175,6 @@ const SentFormData = () => {
     setSelectedBgImage(file);
     setSelectedBgPreview(URL.createObjectURL(file));
   };
-
-  // Set first image as default on mount
-  // useEffect(() => {
-  //   const setDefaultImage = async () => {
-  //     const response = await fetch(image1);
-  //     const blob = await response.blob();
-  //     const file = new File([blob], "background.jpg", { type: blob.type });
-  //     setSelectedBgImage(file);
-  //     setSelectedBgPreview(URL.createObjectURL(file));
-  //   };
-  //   setDefaultImage();
-  // }, []);
 
   // Select background image end -------------------------------------------------------------
 
@@ -285,7 +266,7 @@ const SentFormData = () => {
       dispatch(setPaymentStatus(user.payment_status));
 
       // if (user.payment_status === "SUCCESS") {
-        navigate("/receipt");
+      navigate("/receipt");
       // }
     } catch (error) {
       console.error("Error verifying payment:", error);
@@ -458,25 +439,56 @@ const SentFormData = () => {
           <div className="info">
             <div className="form">
               <form
-                ref={formRef}
-                id="dataForm"
-                onChange={checkFormCompletion}
-                onSubmit={(event) => handleClick222(event)}
-              >
+  ref={formRef}
+  onSubmit={(event) => {
+    event.preventDefault();
+
+    // 1️⃣ Check background image
+    if (!selectedBgImage) {
+      alert("Please select a background image before submitting.");
+      return;
+    }
+
+    // 2️⃣ Check camera image
+    if (!isImageCaptured) {
+      alert("Please capture your image before submitting.");
+      return;
+    }
+
+    // 3️⃣ Submit form normally
+    handleClick222(event);
+  }}
+>
+                
                 <br></br>
                 <BackgroundImage onSelect={handleBgSelect} />
-                <br></br>
+                {/* invisible input for custom validity */}
+                <input
+                  type="text"
+                  id="bg-required"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",  // move it off-screen
+                    width: "1px",
+                    height: "1px",
+                    opacity: 0,
+                  }}
+                  tabIndex="-1"
+                />
                 {selectedBgPreview && (
-                  <div style={{ marginTop: "10px" }}>
-                    <img
-                      src={selectedBgPreview}
-                      alt="Selected background"
-                      width="100"
-                      style={{ border: "2px solid #333" }}
-                    />
-                  </div>
-                )}
-                {/* {selectedBgImage && <p style={{ color:'white'}}>Background image selected</p>} */}
+                <div style={{ marginTop: "10px" }}>
+                  <img
+                    src={selectedBgPreview}
+                    alt="Selected background"
+                    width="100"
+                    style={{ border: "2px solid #333" }}
+                  />
+                </div>
+              )}
+
+              <p style={{ color: "red", marginTop: "5px" }}>
+                {!selectedBgImage && "Background image is required *"}
+              </p>
                 <br></br>
                 <label htmlFor="fname">
                   Name / नाव <span style={{ color: "red" }}>*</span>
@@ -540,16 +552,14 @@ const SentFormData = () => {
                   (*) before submitting." / "सबमिट करण्यापूर्वी कृपया तारांकित
                   (*) चिन्हांकित केलेली सर्व आवश्यक फील्ड भरा."
                 </p>
-                
                 <br></br>
-                <p  style={{ color: "red"}}>Please wait 5 seconds after payment. 
-                  You’ll be redirected here to see when your image appearing on the screen. 
-                  / कृपया पेमेंट पूर्ण झाल्यानंतर ५ सेकंद प्रतीक्षा करा. तुमचा फोटो स्क्रीनवर कधी दिसेल ते तुम्हाला पाहता येईल.
+                <p style={{ color: "red" }}>
+                  Please wait 5 seconds after payment. You’ll be redirected here
+                  to see when your image appearing on the screen. / कृपया पेमेंट
+                  पूर्ण झाल्यानंतर ५ सेकंद प्रतीक्षा करा. तुमचा फोटो स्क्रीनवर
+                  कधी दिसेल ते तुम्हाला पाहता येईल.
                 </p>
-
-                  
                 {loading && <div id="loader"></div>}
-                  
                 {/* Show error if image is not captured */}
                 {errorMessage && (
                   <div id="message" style={{ color: "red" }}>
