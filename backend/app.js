@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-
 const userRoutes = require('./routes/indexMonolithic');
 const uploadServer = require('./routes/uploadServer');
 const sseServer = require('./routes/sseServer');
 const locationCheck = require('./routes/locationCheck');
 const authRoutes = require("./auth/auth")
+const backgroundImg = require("./routes/backgroundImg")
 
 // whatsapp
 //const webhookRoutes = require("./routes/webhook"); // Adjust path as needed
@@ -43,6 +43,17 @@ function authenticateToken(req, res, next) {
 app.use('/screenshoots', express.static(path.join(__dirname, 'screenshoots')));
 app.use('/processed_images', express.static(path.join(__dirname, 'processed_images')));
 
+// Serve static background images with CORS headers
+const UPLOAD_FOLDER = path.join(__dirname, "uploads");
+app.use(
+  "/background",
+  express.static(UPLOAD_FOLDER, {
+    setHeaders: (res, path, stat) => {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+    },
+  })
+);
+
 app.use('/api/login', express.json({ limit: "1mb" }), express.urlencoded({
   limit: "1mb",
   extended: true,
@@ -65,6 +76,9 @@ app.use('/sse/api/items', sseServer);
 // Mount the webhook
 //app.use("/webhook", webhookRoutes);
 app.use("/webhook", whatsappRouter); // or "/webhook" if you want all webhooks under that prefix
+
+// user send background images
+app.use("/background", backgroundImg);
 
 app.use('/', express.json({ limit: "300mb" }),express.urlencoded({
     limit: "300mb",  // 300 md on live server and local 100 mb

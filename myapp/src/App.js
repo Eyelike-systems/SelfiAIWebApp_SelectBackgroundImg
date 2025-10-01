@@ -6,6 +6,7 @@ import { Receipt } from "./components/Receipt";
 import Header from "./components/Header";
 import { ReceiptTest } from "./components/ReceiptTest";
 import { ReceiptDownload } from "./components/ReceiptDownload";
+import ImagesUploadForm from "./components/UploadImages/ImagesUploadForm";
 // import SentFormData from "./components/SentFormData";
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" element={<SentFormData />} />
           <Route exact path="/receipt" element={<Receipt />} />
           <Route exact path="/receiptDownload" element={<ReceiptDownload />} />
+          <Route exact path="/upload" element={<ImagesUploadForm />} />
           {/* <Route exact path="/receiptTest" element={<ReceiptTest />} /> */}
           {/* Catch-all route for 404 page */}
           <Route path="*" element={<PageNotFound />} />

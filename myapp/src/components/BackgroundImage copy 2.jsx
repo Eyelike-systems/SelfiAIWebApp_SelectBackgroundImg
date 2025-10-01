@@ -1,34 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+
+// Automatically import all images in a folder
+const importAllImages = (r) => r.keys().map(r);
+
+const images = importAllImages(require.context("../assets/backgroundImages", false, /\.(png|jpe?g|svg)$/));
 
 const BackgroundImage = ({ onSelect }) => {
-  const [images, setImages] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const fetchImages = async () => {
-  //   const res = await fetch("http://localhost:3000/background/images");
-  //   const data = await res.json();
-  //   console.log("get backgrouns images from server: ", data)
-  //   setImages(data);
-  // };
-
-  const fetchImages = async () => {
-  try {
-    const res = await fetch("http://localhost:3000/background/images"); // ✅ backend returns array of URLs
-    const data = await res.json();
-    console.log("get background images from server:", data);
-    setImages(data);
-  } catch (err) {
-    console.error("Error fetching images:", err);
-  }
-};
-
-
-  useEffect(() => {
-    fetchImages();
-  }, []);
-
-  const chooseImage = async (imageUrl) => {
-    const response = await fetch(imageUrl);
+  const chooseImage = async (imagePath) => {
+    const response = await fetch(imagePath);
     const blob = await response.blob();
     const file = new File([blob], "background.jpg", { type: blob.type });
 
@@ -38,7 +19,9 @@ const BackgroundImage = ({ onSelect }) => {
 
   return (
     <div>
-      <button type="button" onClick={() => setIsModalOpen(true)}>Select Background Image</button>
+      <button type="button" onClick={() => setIsModalOpen(true)}>
+        Select Background Image
+      </button>
 
       {isModalOpen && (
         <div
@@ -62,6 +45,7 @@ const BackgroundImage = ({ onSelect }) => {
                 <img
                   key={idx}
                   src={img}
+                  alt={`Background ${idx + 1}`}
                   width="150"
                   style={{ cursor: "pointer", flex: "0 0 auto" }}
                   onClick={() => chooseImage(img)}
