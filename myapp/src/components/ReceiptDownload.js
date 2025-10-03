@@ -3,28 +3,28 @@ import { resetUserAllInfo } from "../redux/slices/paymentSlice";
 import jsPDF from "jspdf";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/receipt.css";
-import Logo from '../assets/images/eyelikesystemsLogo.jpg'
+import Logo from "../assets/images/eyelikesystemsLogo.jpg";
 import { useLocation } from "react-router-dom";
 
 export const ReceiptDownload = ({}) => {
-    const location = useLocation();
-    const passedUserData = location.state;
+  const location = useLocation();
+  const passedUserData = location.state;
 
-    console.log("passedUserData: ", passedUserData)
+  console.log("passedUserData: ", passedUserData);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-    //   const userInfo = useSelector((state) => state.payment.userInfo);
-    //   const userData = userInfo?.[0];
+  //   const userInfo = useSelector((state) => state.payment.userInfo);
+  //   const userData = userInfo?.[0];
   const userData = passedUserData;
-//   var completionText = userData.payment_completion_time || "Payment not completed";
-  console.log("USERDATA: ", userData)
+  //   var completionText = userData.payment_completion_time || "Payment not completed";
+  console.log("USERDATA: ", userData);
 
   const redirectToHome = () => {
     dispatch(resetUserAllInfo());
     navigate("/");
-  }
+  };
 
   const downloadPDF = () => {
     if (!userData) return;
@@ -43,7 +43,6 @@ export const ReceiptDownload = ({}) => {
       ? userData.user_selected_time
       : "Your image will not be displayed due to payment issue";
 
-    
     const entries = [
       // { label: "Your image will be displayed at this time", value: displayTimeText },
       { label: "Order ID", value: userData.order_id },
@@ -84,7 +83,11 @@ export const ReceiptDownload = ({}) => {
       // Note line
       doc.setTextColor(150, 150, 150);
       doc.setFontSize(8);
-      doc.text("*Note: We don't send any marketing links or offers.", 20, footerY);
+      doc.text(
+        "*Note: We don't send any marketing links or offers.",
+        20,
+        footerY
+      );
 
       // Powered by + logo + company name
       const poweredByX = 20;
@@ -98,7 +101,14 @@ export const ReceiptDownload = ({}) => {
       const logoX = poweredByX + 45; // shift logo right after text
       const logoWidth = 15;
       const logoHeight = 10;
-      doc.addImage(logoBase64, "JPEG", logoX, poweredByY - logoHeight + 2, logoWidth, logoHeight);
+      doc.addImage(
+        logoBase64,
+        "JPEG",
+        logoX,
+        poweredByY - logoHeight + 2,
+        logoWidth,
+        logoHeight
+      );
 
       // Add company name right after logo
       const textX = logoX + logoWidth + 3;
@@ -151,7 +161,11 @@ export const ReceiptDownload = ({}) => {
               </table>
             </div>
 
-            <button onClick={downloadPDF} className="btnRedirectToHome" style={{ marginTop: "20px" }}>
+            <button
+              onClick={downloadPDF}
+              className="btnRedirectToHome"
+              style={{ marginTop: "20px" }}
+            >
               Download PDF
             </button>
           </>
