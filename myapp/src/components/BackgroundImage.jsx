@@ -4,24 +4,16 @@ const BackgroundImage = ({ onSelect }) => {
   const [images, setImages] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const fetchImages = async () => {
-  //   const res = await fetch("http://localhost:3000/background/images");
-  //   const data = await res.json();
-  //   console.log("get backgrouns images from server: ", data)
-  //   setImages(data);
-  // };
-
   const fetchImages = async () => {
-  try {
-    const res = await fetch("http://localhost:3000/background/images"); // ✅ backend returns array of URLs
-    const data = await res.json();
-    console.log("get background images from server:", data);
-    setImages(data);
-  } catch (err) {
-    console.error("Error fetching images:", err);
-  }
-};
-
+    try {
+      const res = await fetch("http://localhost:3000/background/images"); //backend returns array of URLs
+      const data = await res.json();
+      console.log("get background images from server:", data);
+      setImages(data);
+    } catch (err) {
+      console.error("Error fetching images:", err);
+    }
+  };
 
   useEffect(() => {
     fetchImages();
@@ -38,7 +30,9 @@ const BackgroundImage = ({ onSelect }) => {
 
   return (
     <div>
-      <button type="button" onClick={() => setIsModalOpen(true)}>Select Background Image</button>
+      <button type="button" onClick={() => setIsModalOpen(true)}>
+        Select Background Image
+      </button>
 
       {isModalOpen && (
         <div
@@ -55,9 +49,24 @@ const BackgroundImage = ({ onSelect }) => {
             zIndex: 1000,
           }}
         >
-          <div style={{ background: "#fff", padding: "20px", borderRadius: "8px", width: "80%", maxWidth: "800px" }}>
+          <div
+            style={{
+              background: "#fff",
+              padding: "20px",
+              borderRadius: "8px",
+              width: "80%",
+              maxWidth: "800px",
+            }}
+          >
             <h3>Select an Image</h3>
-            <div style={{ display: "flex", overflowX: "auto", gap: "10px", padding: "10px 0" }}>
+            <div
+              style={{
+                display: "flex",
+                overflowX: "auto",
+                gap: "10px",
+                padding: "10px 0",
+              }}
+            >
               {images.map((img, idx) => (
                 <img
                   key={idx}
@@ -68,7 +77,10 @@ const BackgroundImage = ({ onSelect }) => {
                 />
               ))}
             </div>
-            <button onClick={() => setIsModalOpen(false)} style={{ marginTop: "10px" }}>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              style={{ marginTop: "10px" }}
+            >
               Cancel
             </button>
           </div>

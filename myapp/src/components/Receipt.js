@@ -71,7 +71,7 @@ export const Receipt = () => {
             <p style={{ color: "#fff", marginTop: "10px" }}>
               For receipt{" "}
               <span
-                onClick={() => navigate("/receiptDownload", { state: userData })}
+                onClick={() => navigate("/receipt_download", { state: userData })}
                 style={{ color: "red", cursor: "pointer", textDecoration: "none" }}
               >
                 click here
