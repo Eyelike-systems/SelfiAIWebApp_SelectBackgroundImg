@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import config from "../config";
 
 const BackgroundImage = ({ onSelect }) => {
   const [images, setImages] = useState([]);
@@ -6,7 +7,7 @@ const BackgroundImage = ({ onSelect }) => {
 
   const fetchImages = async () => {
     try {
-      const res = await fetch("http://localhost:3000/background/images"); //backend returns array of URLs
+      const res = await fetch(`${config.IP_ADDRESS}/background/images`); //backend returns array of URLs
       const data = await res.json();
       console.log("get background images from server:", data);
       setImages(data);

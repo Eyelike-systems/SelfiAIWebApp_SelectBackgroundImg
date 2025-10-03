@@ -78,7 +78,7 @@ app.use('/sse/api/items', sseServer);
 app.use("/webhook", whatsappRouter); // or "/webhook" if you want all webhooks under that prefix
 
 // user send background images
-app.use("/background", backgroundImg);
+app.use("/api/background", backgroundImg);
 
 app.use('/', express.json({ limit: "300mb" }),express.urlencoded({
     limit: "300mb",  // 300 md on live server and local 100 mb

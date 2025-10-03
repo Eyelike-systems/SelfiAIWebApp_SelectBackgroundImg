@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import config from "../../config";
 
 const ImagesUploadForm = () => {
   const [files, setFiles] = useState([]);
@@ -15,7 +16,7 @@ const ImagesUploadForm = () => {
     const formData = new FormData();
     files.forEach((file) => formData.append("images", file));
 
-    const res = await fetch("http://localhost:3000/background/images", {
+    const res = await fetch(`${config.IP_ADDRESS}/background/images`, {
       method: "POST",
       body: formData,
     });
