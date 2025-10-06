@@ -31,9 +31,13 @@ const BackgroundImage = ({ onSelect }) => {
 
   return (
     <div>
-      <button type="button" onClick={() => setIsModalOpen(true)}>
-        Select Background Image
-      </button>
+      <label htmlFor="order_amount">
+        Select background image
+        <span style={{ color: "red" }}> *</span>
+      </label><br></br>
+      <select onClick={() => setIsModalOpen(true)}>
+        Select Background Image *
+      </select>
 
       {isModalOpen && (
         <div

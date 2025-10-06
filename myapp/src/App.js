@@ -6,6 +6,7 @@ import { Receipt } from "./components/Receipt";
 import Header from "./components/Header";
 import { ReceiptDownload } from "./components/ReceiptDownload";
 import ImagesUploadForm from "./components/UploadImages/ImagesUploadForm";
+import Login from "./pages/login";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/receipt" element={<Receipt />} />
           <Route exact path="/receipt_download" element={<ReceiptDownload />} />
           <Route exact path="/add_background_images" element={<ImagesUploadForm />} />
+          <Route exact path="/login" element={<Login />} />
           {/* Catch-all route for 404 page */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
