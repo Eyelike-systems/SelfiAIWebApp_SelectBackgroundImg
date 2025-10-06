@@ -24,7 +24,7 @@ const Login = () => {
 
       if (response.ok) {
         // Navigate to the dashboard page after successful login
-        navigate('/dashboard');
+        navigate('/add_background_images');
       } else {
         setErrorMessage(responseData.message || 'Invalid username or password');
       }
@@ -35,7 +35,7 @@ const Login = () => {
   };
 
   return (
-    <div className="main" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '100px', marginTop: '2%' }}>
+    <div className="main" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
       <div className="info">
         <div className="login-title">
           <h2>User Login</h2>

@@ -481,14 +481,14 @@ const SentFormData = () => {
                     <img
                       src={selectedBgPreview}
                       alt="Selected background"
-                      width="100"
+                      width="200"
                       style={{ border: "2px solid #333" }}
                     />
                   </div>
                 )}
-                <p style={{ color: "red", marginTop: "5px" }}>
+                {/* <p style={{ color: "red", marginTop: "5px" }}>
                   {!selectedBgImage && "Background image is required *"}
-                </p>
+                </p> */}
                 <br></br>
                 <label htmlFor="fname">
                   Name / नाव <span style={{ color: "red" }}>*</span>
