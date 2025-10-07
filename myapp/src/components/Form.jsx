@@ -481,7 +481,7 @@ const SentFormData = () => {
                     <img
                       src={selectedBgPreview}
                       alt="Selected background"
-                      width="200"
+                      width="330"
                       style={{ border: "2px solid #333" }}
                     />
                   </div>
